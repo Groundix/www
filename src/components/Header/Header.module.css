@@ -1,0 +1,16 @@
+.header{
+    grid-area: h;
+    background-image: linear-gradient(to right, #4768b5, #00c8ff);
+    padding: 0px 0px 5px;
+    
+    width: 100%;
+    z-index: 101;
+    -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    position:fixed;
+    margin-bottom: 50px;
+  
+  }
+  .header img{
+    width: 60px;
+  }
