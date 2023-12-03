@@ -1,19 +1,17 @@
-import { combineReducers, legacy_createStore } from "redux";
+import { combineReducers } from "redux";
 import profilePageReducer from "./profilePageReducer";
 import dialogsPageReducer from "./dialogsPageReducer";
 import navBarDataReducer from "./NavBarReducer";
 import { configureStore } from "@reduxjs/toolkit";
 
-let reducers  = combineReducers({
-    profilePage: profilePageReducer,
-    dialogsPage: dialogsPageReducer,
-    navBarData: navBarDataReducer   
+const reducers = combineReducers({
+  profilePage: profilePageReducer,
+  dialogsPage: dialogsPageReducer,
+  navBarData: navBarDataReducer,
 });
 
-let store = configureStore({
-    reducers:reducers,
+const store = configureStore({
+  reducer: reducers,
 });
-
-
 
 export default store;

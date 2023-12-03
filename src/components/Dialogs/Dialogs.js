@@ -7,7 +7,7 @@ import { onMessageChangeActionCreator, sendMessageActionCreator } from "../../re
 
 const Dialogs = (props) => {
 
-
+  
     let dialogsElements = props.state.dialogsData.map((d) => <DialogItem name={d.name} id={d.id} img={d.img} />);
 
     let messageElements = props.state.messageData.map((m) => <Message message={m.message} />)

@@ -3,6 +3,11 @@ const SEND_MESSAGE = 'SEND-MESSAGE';
 
 
 let initialState = { 
+  messageData: [
+    { id: 1, message: 'Hi' },
+    { id: 2, message: 'How are you?' },
+    { id: 3, message: 'Yo!' }
+  ],
   dialogsData: [
     { id: 1, name: 'Dimych', img: 'https://i.pinimg.com/736x/67/e1/8e/67e18ea46fdafd1312aee3e7a8a12672.jpg' },
     { id: 2, name: 'Dianito', img: 'https://cdn.freelance.ru/images/att/1575043_900_600.png' },
@@ -14,25 +19,29 @@ let initialState = {
 
 }
 const dialogsPageReducer = (state = initialState, action) => {
-    switch(action.type){
-        case SEND_MESSAGE:
-            let newMessageX = {
-                id: 7,
-                message: state.newMessageText,
-                like: 0
-            };
-            state.messageData.push(newMessageX);
-            state.newMessageText = '';
-            return state;
-
-        case ON_MESSAGE_CHANGE:   
-        state.newMessageText = action.newText;
-        return state;
-        default:
-            return state;
-    }
-
+  switch(action.type){
+      case SEND_MESSAGE:
+          let newMessageX = {
+              id: 7,
+              message: state.newMessageText,
+              like: 0
+          };
+           return {
+            ...state,
+            messageData: [...state.messageData, newMessageX], // Изменено dialogsData на messageData
+            newMessageText: ''
+           };
+      case ON_MESSAGE_CHANGE:   
+      return{
+       ...state,
+       newMessageText: action.newText
+      }
+     
+      default:
+          return state;
+  }
 }
+
 
 export const onMessageChangeActionCreator = (text) => {
     return {
