@@ -1,31 +1,29 @@
 import React from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { onMessageChangeActionCreator,sendMessageActionCreator } from "../../redux/dialogsPageReducer";
+import { connect } from 'react-redux';
+import { onMessageChangeActionCreator, sendMessageActionCreator } from "../../redux/dialogsPageReducer";
 import Dialogs from "./Dialogs";
 
-const DialogsContainer = () => {
-    const dispatch = useDispatch();
-    const dialogsData = useSelector(state => state.dialogsPage.dialogsData);
-    const messageData = useSelector(state => state.dialogsPage.messageData);
-    const newMessageText = useSelector(state => state.dialogsPage.newMessageText);
-
-    const sendMessage = () => {
-        dispatch(sendMessageActionCreator());
-    }
-
-    const onMessageChange = (text) => {
-        dispatch(onMessageChangeActionCreator(text));
-    }
-
-    return (
-        <Dialogs
-            dialogsData={dialogsData}
-            messageData={messageData}
-            newMessageText={newMessageText}
-            sendMessage={sendMessage}
-            onMessageChange={onMessageChange}
-        />
-    );
+// Определение функций mapStateToProps и mapDispatchToProps
+const mapStateToProps = (state) => {
+    return {
+        dialogsData: state.dialogsPage.dialogsData,
+        messageData: state.dialogsPage.messageData,
+        newMessageText: state.dialogsPage.newMessageText,
+    };
 };
 
-export default DialogsContainer;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        sendMessage: () => {
+            dispatch(sendMessageActionCreator());
+        },
+        onMessageChange: (text) => {
+            dispatch(onMessageChangeActionCreator(text));
+        },
+    };
+};
+
+// Подключение компонента к Redux
+const ConnectedDialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
+
+export default ConnectedDialogsContainer;
