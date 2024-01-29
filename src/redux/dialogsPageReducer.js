@@ -1,5 +1,3 @@
-import { connect } from "react-redux";
-import Dialogs from "../components/Dialogs/Dialogs";
 
 const ON_MESSAGE_CHANGE = 'UPDATE-NEW-MESSAGE-TEXT';
 const SEND_MESSAGE = 'SEND-MESSAGE';

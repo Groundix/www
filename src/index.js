@@ -10,24 +10,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
 reportWebVitals();  
-
-let rerenderEntireTree = (state) => {
-   
     root.render(
         <React.StrictMode>
             <Provider store={store}>
-            <App appState={state} dispatch={store.dispatch.bind(store) } />
+            <App  />
             </Provider>
         </React.StrictMode>
     );
-}
 
-//sendMessage={store.sendMessage.bind(store)} updateNewMessageText={store.updateNewMessageText.bind(store)}
-
-
-rerenderEntireTree(store.getState());
-
-store.subscribe(() =>{
-    let state = store.getState()
-    rerenderEntireTree(state);
-});
